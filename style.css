@@ -1,0 +1,1563 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+  scrollbar-width: none;  /* For Firefox */
+  -ms-overflow-style: none;  /* For IE and Edge */
+}
+
+body {
+  min-height: 90vh;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center;     /* Centers content vertically */
+  flex-direction: row;
+}
+
+::-webkit-scrollbar {
+  display: none;  /* For WebKit browsers like Chrome, Safari, Edge */
+}
+/* Css for sidebar */
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #11101D;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open{
+  width: 250px;
+}
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.1s ease-out;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+  opacity: 1;
+  transition: all 0.6s ease-in;
+}
+.sidebar .logo-details #btn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+  text-align: right;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+  display: none;
+}
+.sidebar input{
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  background: #1d1b31;
+}
+.sidebar.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+.sidebar .bx-search{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar.open .bx-search:hover{
+  background: #1d1b31;
+  color: #FFF;
+}
+.sidebar .bx-search:hover{
+  background: #FFF;
+  color: #11101d;
+}
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #11101D;
+}
+.sidebar li a:hover{
+  background: #FFF;
+}
+.sidebar li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.1s ease-out;
+}
+.sidebar.open li a .links_name{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.6s ease-in;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #11101D;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.sidebar.open li.profile{
+  width: 250px;
+}
+.sidebar li .profile-details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .job{
+  font-size: 12px;
+}
+.sidebar .profile #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1d1b31;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+.SVlogo{
+  position: absolute;
+  top: 4vh;
+  left: 19vh;
+}
+.SVlogo img{
+  width: 30%;
+  height: 30%;
+}
+
+/* PROFILE PICTURE UNIVERSAL */
+
+.prupayl {
+  position: absolute;
+  top: 40px;
+  right: 15vh;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between username and profile picture */
+  width: 120px;
+}
+
+.uniUser p {
+  margin: 0;
+  position: relative;
+  font-size: 15px;
+  color: #11101d;
+  font-weight: bold;
+  left: 3vh;
+}
+
+.uniProfile {
+  position: absolute;
+  right: 11vh;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.uniProfile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* Css for DIV1 - Home */
+
+.popularMovies{
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  right: 6%;
+  color: #1d1b31;
+  flex-direction: row;
+  
+}
+
+.popularMovies h4{
+  position:relative;
+  top: -3vh;
+  color: #240e42;
+  font-size: 30px;
+  font-weight: 1500;
+  
+}
+
+.newMovies{
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  right: 6%;
+  color: #1d1b31;
+  flex-direction: row;
+  
+}
+
+.newMovies h4{
+  position:relative;
+  top: -3vh;
+  color: #240e42;
+  font-size: 30px;
+  font-weight: 1500;
+  
+}
+
+
+.moreMovies{
+  position: absolute;
+  top: 136%;
+  left: 10%;
+  right: 6%;
+  color: #1d1b31;
+  flex-direction: row;
+  
+}
+
+.moreMovies h4{
+  position:relative;
+  top: -3vh;
+  color: #240e42;
+  font-size: 30px;
+  font-weight: 1500;
+  
+}
+
+
+.popular-movies-cards, .new-movies-cards {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  gap: 33px; /* Space between movie cards */
+  max-width: 100%; /* Keep the width limited */
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.more-movies-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 33px; /* Space between each card */
+  justify-content: flex-start;
+}
+
+.movie-card {
+  flex: 1 1 180px; 
+  max-width: 200px; 
+  min-width: 200px; 
+  height: 280px;
+  transition: 0.3s linear;
+  margin-bottom: 15vh; 
+}
+
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.movie-card h3.long-title {
+  font-size: 12px;
+  white-space: normal; 
+  overflow: visible; 
+  text-overflow: unset; 
+  text-align: center; 
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+.movie-card h3 {
+  font-size: 15px;
+  font-weight: 650;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap; 
+  text-align: center; 
+}
+
+.movie-card  img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.more-movies-cards .movie-card {
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: space-between; /* Ensure the button stays at the bottom */
+  flex: 1 1 180px; /* Allow flexibility */
+  max-width: 200px; /* Prevents overly large cards */
+  min-width: 200px; /* Sets a consistent width */
+  height: 280px; /* Keeps the card height fixed */
+  position: relative; /* Important for button placement */
+}
+.more-movies-cards .add-to-watchlist-btn {
+  position: absolute;
+  bottom: -90px; /* Pin the button to the bottom of the card */
+  background-color: #2f1c3f;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 200px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.more-movies-cards .add-to-watchlist-btn:hover {
+  background-color: #42295a;
+  transform: scale(1.05);
+}
+
+.more-movies-cards .updateBTN{
+  position: absolute;
+  bottom: -135px;
+  color: #FFF;
+  background-color: #11101D;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 200px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Adjustments for "Add to Watchlist" button */
+.add-to-watchlist-btn {
+  position: absolute;
+  bottom: 55px;
+  background-color: #2f1c3f;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 200px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-to-watchlist-btn:hover {
+  background-color: #1d1b31;
+  transform: scale(1.05);
+}
+
+.updateBTN{
+  position: absolute;
+  bottom: 10px;
+  color: #FFF;
+  background-color: #11101d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 200px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.updateBTN:hover{
+  background-color: #1d1b31;
+  transform: scale(1.05);
+}
+
+
+
+/* CSS for Div 2 */
+
+#sectionInput{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #3e3b55;
+  background-color: #ffffff;
+  color: #11101D;
+  font-size: 16px;
+}
+
+#genresInput{
+  width: 100%;
+  height: 75px;
+  border-radius: 5px;
+  border: 1px solid #3e3b55;
+  background-color: #ffffff;
+  color: #11101D;
+  font-size: 16px;
+}
+
+.movie-container {
+  position: relative;
+  left: -20vh;
+  top: 2vh;
+  max-width: 1200px;
+  width: 200%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #11101D; /* Sidebar color */
+  border: 1px solid #1d1b31;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #FFF;
+}
+
+.movie-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.movie-container p {
+  font-size: 16px;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.movie-form {
+  background-color: #1d1b31;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.movie-form h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+/* Form Labels and Inputs */
+.movie-form label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #e0e0e0;
+}
+
+.movie-form input[type="text"],
+.movie-form input[type="file"],
+.movie-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #3e3b55;
+  background-color: #ffffff;
+  color: #11101D;
+  font-size: 16px;
+}
+
+.movie-form input[type="text"]::placeholder,
+.movie-form textarea::placeholder {
+  color: #888;
+}
+
+/* Form Buttons */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#add-movie-btn {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-movie-btn:hover {
+  background-color: #11101D;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+
+/*login form*/
+#form-open{
+  position: absolute;
+  top: 40px;
+  right: 6%;
+  color: white;
+  font-size: 16px;
+  background-color: #1d1b31; /* Purple background */
+  border: 2px solid #1d1b31; /* Purple border */
+  padding: 8px 16px;
+  border-radius: 16px; /* Rounded border */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#form-open:hover {
+  background-color: #5b1cb2; /* Darker purple on hover */
+  border-color: #5b1cb2;
+}
+
+.form_container { 
+  position: fixed;
+  max-width: 320px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  z-index: 1;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-out;
+}
+.home.show .form_container {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.signup_form {
+  display: none;
+}
+
+.form_container.active .signup_form {
+  display: block;
+  height: 500px;
+}
+
+.form_container.active .login_form {
+  display: none;
+}
+
+.form_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #0b0217;
+  font-size: 22px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.form_container h2 {
+  font-size: 22px;
+  color: #0b0217;
+  text-align: center;
+}
+
+.input_box {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+.input_box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 30px;
+  color: #333;
+  transition: all 0.2s ease;
+  border-bottom: 1.5px solid #aaaaaa;
+}
+.input_box input:focus {
+  border-color: #7d2ae8;
+}
+.input_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+}
+
+.google-login {
+  position: relative;
+  top: 50px;
+  left: 80px;
+}
+
+.input_box i.email,
+.input_box i.password {
+  left: 0;
+}
+.input_box input:focus ~ i.email,
+.input_box input:focus ~ i.password {
+  color: #7d2ae8;
+}
+.input_box i.pw_hide {
+  right: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+.option_field {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form_container a {
+  color: #7d2ae8;
+  font-size: 12px;
+}
+.form_container a:hover {
+  text-decoration: underline;
+}
+
+.form_container .button {
+  background: #1d1b31;
+  color: #FFF;
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+.login_signup {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.back_button {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #0b0217;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.back_button:hover {
+  opacity: 1;
+}
+
+.add-watchlist {
+  background-color: #007bff;  /* Blue background */
+  color: white;               /* White text */
+  font-size: 16px;            /* Font size */
+  padding: 10px 20px;         /* Padding for top-bottom and left-right */
+  border: none;               /* Remove border */
+  border-radius: 5px;         /* Rounded corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.add-watchlist:hover {
+  background-color: #0056b3;  /* Darker blue on hover */
+  transform: scale(1.05);      /* Slightly enlarge the button */
+}
+
+.add-watchlist:focus {
+  outline: none;              /* Remove outline on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add a blue glow */
+}
+
+.add-watchlist:active {
+  background-color: #004085;  /* Darkest blue when clicked */
+  transform: scale(1);        /* Maintain the original size on click */
+}
+
+/*OVERLAY CSS DIM BACKGROUND*/s
+/* Overlay to dim background */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.home.show #overlay {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 0;
+}
+
+/* Adjust z-index for form_container to appear above overlay */
+.form_container {
+  z-index: 1;
+}
+
+/* Css for DIV3 - Watchlist */
+
+.watchlist-body{
+  position: absolute;
+  top: 26%;
+  left: 10%;
+  right: 6%;
+  color: #1d1b31;
+  flex-direction: row;
+
+}
+
+.watchlist-body h4{
+  position:relative;
+  top: -5vh;
+  font-size: 30px;
+  font-weight: 500;
+
+}
+
+.watchlist-movies-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px; /*Space between each card */
+  justify-content: flex-start;
+}
+
+.watchlist-movies-card {
+  flex: 1 1 180px; /*Set a base width of 180px, allowing flexibility*/
+  max-width: 220px; /*Prevents the cards from expanding too wide*/
+  min-width: 180px; /*Ensures minimum width to prevent wrapping*/
+  height: 280px;
+  transition: 0.3s linear;
+  margin-bottom: 12vh; /*Space between rows */
+}
+
+
+.watchlist-movies-card img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.watchlist-movies-card h3 {
+  font-size: 15px;
+  font-weight: 650;
+  margin-top: 5px;
+}
+
+
+
+/* CSS for HORIZONTAL SCROLL buttons */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background-color: #11101D;
+  color: #aaaaaa;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: background-color 0.3s, transform 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.scroll-button:hover {
+  background-color: #ffffff;
+  color: #11101D;
+  opacity: 1;
+}
+
+.scroll-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.scroll-left {
+  left: -20px;
+}
+
+.scroll-right {
+  right: -20px;
+}
+
+.backbutton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #11101D;
+  color: #aaaaaa;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: background-color 0.3s, transform 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.backbutton:hover {
+  background-color: #ffffff;
+  color: #11101D;
+  opacity: 1;
+}
+
+.movieForm{
+  position: absolute;
+  top: 16%;
+  left: 20%;
+  right: 6%;
+  background-color: #11101D;
+  border-radius: 7px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  overflow-y: scroll;
+  height: 70vh;
+  width: 120vh;
+  z-index: 99;
+}
+
+.movieInfo{
+  position: absolute;
+  top: 7%;
+  left: 2%;
+  right: 2%;
+  background-color: #11101D;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.trailer{
+
+  position: relative;
+  width: 70%;
+  height: 50vh;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+iframe{
+  border-radius: 12px;
+  border-style: none;
+}
+
+/* PROFILE PICTURE OF MODAL*/
+#movieRating .profile-picture {
+  position: absolute;
+  left: 26px;
+  top: 13px;
+  width: 57px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#movieRating .profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PROFILE PICTURE OF MODAL*/
+#greatestComment .profile-picture {
+  position: relative;
+  left: 25px;
+  top: 20px;
+  width: 57px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#greatestComment .profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movieDtails {
+  position: absolute;
+  top: 2vh; 
+  left: 69%;  
+  width: 30%; 
+  color: #ffffff;
+}
+
+#movieTitle {
+  text-align: left;
+  font-size: 39px;
+  color: #8174A0 ;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+#movieTitle.long-title {
+  font-size: 20px;
+}
+
+#movieGenre{
+  color: #E0E0E0;
+  text-align: justify;
+  font-size: 15px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+#movieYear {
+  color: #E0E0E0;
+  margin-bottom: 30px;
+  text-align: justify;
+  font-size: 15px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+#movieDescription {
+  color: #E0E0E0;
+  text-align: justify;
+  font-size: 15px;
+  margin-top: 10px;
+  line-height: 1.6;
+  max-height: 240px; 
+  overflow-y: auto; 
+}
+
+#movieRatingContainer{
+  position: relative;
+  margin-right: 100px;
+  text-align: left;
+  color: #000000;
+  font-size: 15px;
+  margin-top: 10px;
+  background-color: #11101D;
+  width: 100%;
+  height: 13vh;
+}
+
+#movieRatingContainer #movieRatingTitle{
+
+  position: relative;
+  top: 3vh;
+  margin-left: 6%;
+  color: WHITE;
+  font-size: 19px;
+
+}
+
+#greatestComment{
+  position: relative;
+  top: 10vh;
+  text-align: left;
+  color: #000000;
+  font-size: 15px;
+  margin-top: 10px;
+  background-color: #494A6D;
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  flex-direction: column; /* This is the key change */
+  border-radius: 8px;
+}
+
+#greatestComment #UserRating{
+  position: absolute;
+  color: whitesmoke;
+  position: relative;
+  margin-top: 4px;
+  width: 170px;
+  word-wrap: break-word;
+}
+
+#greatestComment #movieRatingComment input{
+  position: absolute; 
+  color: rgb(255, 255, 255);
+  position: relative;
+  bottom: 27px;
+  height: 30px;
+  left: 28vh;
+  text-align: center;
+  background-color: #494A6D;
+  border: none;
+  width: 500px;
+}
+
+.star-rating-input {
+  position: absolute;
+  top: 4vh;
+  left: 10vh;
+  display: inline-flex; 
+  gap: 2px; 
+}
+
+.star-rating-input span {
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s ease; 
+}
+
+.star-rating-input span.selected {
+  color: gold;
+}
+
+.user-rating {
+  position: absolute;
+  top: 4vh;
+  left: 10vh;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.user-rating span {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.user-rating span.selected {
+  color: gold;
+}
+
+#movieRating {
+  position: relative;
+  top: 3vh;
+  margin-left: 5%;
+  text-align: left;
+  color: #000000;
+  font-size: 15px;
+  margin-top: 10px;
+  background-color: #494A6D;
+  width: 90%;
+  height: 9vh;
+  display: flex;
+  flex-direction: column; 
+  border-radius: 8px;
+}
+
+#movieRating #UserRating{
+  position: absolute;
+  color: whitesmoke;
+  height: 30px;
+  top: 2vh;
+  left: 10vh;
+}
+
+#movieRatingInput{
+  position: absolute;
+  border-style: none;
+  border-radius: 12px;
+  top: 2vh;
+  left: 20vh;
+  width: 60%;
+  height: 5vh;
+  padding-left: 20px;
+  color: #fff;
+  background-color: #494A6D;
+}
+
+#movieRatingInput::placeholder{
+  top: -1vh;
+  color: #9e9696;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#movieRatingInput:focus{
+  outline: none;
+}
+
+#movieRatingSubmit{
+  position: absolute;
+  bottom: 2vh;
+  right: 3vh;
+  background-color: #11101D;
+  color: #FFF;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 10%;
+  height: 5vh;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.deleteComment{
+  position: absolute;
+  bottom: 2vh;
+  right: 3vh;
+  background-color: #11101D;
+  color: #FFF;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 10%;
+  height: 5vh;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.updateComment{
+  position: absolute;
+  bottom: 2vh;
+  right: 3vh;
+  background-color: #11101D;
+  color: #FFF;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 10%;
+  height: 5vh;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#movieRatingSubmit:hover {
+  background-color: #1d1b31;
+  transform: scale(1.05);
+}
+
+.backBtn {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #ffffff;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.backBtn:hover {
+  opacity: 1;
+}
+
+.watchlist-body .removeform button{
+  background-color: #11101D;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px; /* Optional spacing between the button and description */
+}
+
+.watchlist-body .removeform button:hover {
+  background-color: #221f3a;
+  transform: scale(1.05);
+}
+/* Style the container for the notification button */
+.notification-container {
+  position: relative;
+  display: inline-block;
+  top: -39.5vh;
+  left: 63vh;
+}
+/* Styling for the Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 2.5vh;
+  right: 8.5vh;
+  display: inline-block;
+}
+
+.notification-btn {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.notification-btn:hover {
+  transform: scale(1.20);
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+/* Style for the notification list */
+.notification-list {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 500px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.notification-list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notification-list li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.notification-list li strong {
+  font-size: 1.1em;
+  color: #2d2147;
+}
+
+.notification-list li span {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Optional: Add hover effect for notifications */
+.notification-list li:hover {
+  background-color: #f1f1f1;
+}
+
+/* Modal container styles */
+#updateModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#updateModal > div {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px; /* Ensures it doesn't exceed 400px */
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out; /* Optional animation */
+}
+
+/* Input fields and textarea styling */
+#updateModal input[type="text"],
+#updateModal textarea,
+#updateModal input[type="url"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Buttons styling */
+#updateModal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#updateModal button[type="submit"] {
+  background-color: #42295a;
+  color: white;
+  margin-right: 10px;
+}
+
+#updateModal button[type="submit"]:hover {
+  background-color: #1d1b31;
+}
+
+#updateModal button[type="button"] {
+  background-color: #11101D;
+  color: white;
+}
+
+#updateModal button[type="button"]:hover {
+  background-color: #494A6D;
+}
+
+/* Optional: Fade-in animation for the modal */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.fa-solid, .fas {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 5px;
+}
+
+/* DIV 4 ABOUT US */
+#div4 {
+  min-width: none;
+  min-height: none;
+  height: 170vh;
+  margin-left: 8vh;
+  overflow: hidden;
+  background-color: #eeefe2;
+}
+
+.hidir {
+  background: #fff;
+  color: #11101D;
+  padding: 150px;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.team{
+  color: #11101d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.team-member {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #E0E0E0;
+}
+
+.team-member img {
+  max-width: 50%;
+  border-radius: 50%;
+}
+
+.team-member .pogi{
+  border-radius: 50%;
+  width: 180px;
+  height: 160px;
+}
+
+.team-name{
+  color: #381c52;
+}
+
+.Screen {
+  color: #5d6126;
+  font-style: italic;
+  font-family: Lato;
+  font-size: 50px;
+}
+
+.Vault {
+  color: rgb(0, 0, 0);
+  font-style: italic;
+  font-family: Lato;
+  font-size: 50px;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+footer {
+  background-color: #0a0911;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  bottom: -730px;
+  left: 5vh;
+  right: 0;
+  width: 100%;
+}
+
+footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}

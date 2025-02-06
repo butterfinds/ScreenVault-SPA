@@ -5,8 +5,8 @@ require_once './vendor/autoload.php'; // Google API client
 require_once './mongoDriver/vendor/autoload.php'; // MongoDB client
 
 // Google OAuth Configuration
-$clientID = '870059883597-p6215nfg4mbc8o55nc36lm52hl14n6pg.apps.googleusercontent.com';
-$clientSecret = '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';
+$clientID = '';
+$clientSecret = '';
 $redirectUri = 'http://localhost/TOTOONATO/';
 
 $client = new Google\Client();
